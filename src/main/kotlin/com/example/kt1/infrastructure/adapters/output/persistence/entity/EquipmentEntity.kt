@@ -7,12 +7,13 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Entity
-class EquipmentEntity(var name: String, var description: String) : BaseTimeEntity() {
+class EquipmentEntity : BaseTimeEntity() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
-
+    var name: String? = null
+    var description: String? = null
     var mode: EquipmentMode = EquipmentMode.UNKNOWN
 
 }

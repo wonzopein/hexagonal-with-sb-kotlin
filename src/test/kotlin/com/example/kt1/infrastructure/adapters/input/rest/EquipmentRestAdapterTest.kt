@@ -33,7 +33,7 @@ class EquipmentRestAdapterTest(
     @Test
     @DisplayName("설비 생성")
     fun createEquipment() {
-        val equipmentCreateRequest = EquipmentCreateRequest("설비-A1")
+        val equipmentCreateRequest = EquipmentCreateRequest("설비-A1", "-")
 
         mockMvc.perform(
                 post("/v1/equipments")
