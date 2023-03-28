@@ -11,4 +11,5 @@ class Equipment {
     var createBy: String? = null
     var updatedAt: LocalDateTime? = null
     var updatedBy: String? = null
+    var mode: EquipmentMode = EquipmentMode.UNKNOWN
 }

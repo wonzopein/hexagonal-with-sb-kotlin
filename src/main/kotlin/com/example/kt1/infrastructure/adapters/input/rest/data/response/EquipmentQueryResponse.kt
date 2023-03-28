@@ -1,5 +1,6 @@
 package com.example.kt1.infrastructure.adapters.input.rest.data.response
 
+import com.example.kt1.domain.model.EquipmentMode
 import java.time.LocalDateTime
 
 class EquipmentQueryResponse {
@@ -10,4 +11,5 @@ class EquipmentQueryResponse {
     var createBy: String? = null
     var updatedAt: LocalDateTime? = null
     var updatedBy: String? = null
+    var mode: EquipmentMode = EquipmentMode.UNKNOWN
 }
