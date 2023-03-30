@@ -1,8 +1,10 @@
 package com.example.kt1.infrastructure.adapters.input.rest.data.response
 
+import com.example.kt1.domain.model.EquipmentMode
+
 class EquipmentCreateResponse(
-        private var id: Long,
-        private var name: String,
-        private var description: String
-) {
-}
+    var id: Long,
+    var name: String,
+    var description: String,
+    var mode: EquipmentMode
+)

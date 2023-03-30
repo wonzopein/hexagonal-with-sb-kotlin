@@ -23,11 +23,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 @SpringBootTest
 @AutoConfigureMockMvc
 class EquipmentRestAdapterTest(
-        private var mockMvc: MockMvc,
-        private var equipmentRepository: EquipmentRepository,
-        //private var equipmenrRestMapper: EquipmentRestMapper,
-        private var equipmentPersistenceMapper: EquipmentPersistenceMapper,
-        private var objectMapper: ObjectMapper
+    private var mockMvc: MockMvc,
+    private var equipmentRepository: EquipmentRepository,
+    //private var equipmenrRestMapper: EquipmentRestMapper,
+    private var equipmentPersistenceMapper: EquipmentPersistenceMapper,
+    private var objectMapper: ObjectMapper
 ) {
 
     @Test
@@ -36,16 +36,22 @@ class EquipmentRestAdapterTest(
         val equipmentCreateRequest = EquipmentCreateRequest("설비-A1", "-")
 
         mockMvc.perform(
-                post("/v1/equipments")
-                    .contentType("application/json")
-                    .content(objectMapper.writeValueAsString(equipmentCreateRequest)))
-                .andExpect(status().isCreated)
-                .andDo(print())
+            post("/v1/equipments")
+                .contentType("application/json")
+                .content(objectMapper.writeValueAsString(equipmentCreateRequest))
+        )
+            .andExpect(status().isCreated)
+            .andExpectAll(
+                jsonPath("\$.id").value(1),
+                jsonPath("\$.mode.code").value(EquipmentMode.UNKNOWN.code)
+            )
+            .andDo(print())
     }
 
     @Test
     @DisplayName("설비 조회 - 단건")
     fun getEquipment() {
+
         val equipment = Equipment()
         equipment.name = "테스트 설비-A"
         equipment.description = "설명-A"
@@ -55,11 +61,29 @@ class EquipmentRestAdapterTest(
         entity = equipmentRepository.save(entity)
 
         mockMvc.perform(get("/v1/equipments/{id}", entity.id))
-                .andExpect(status().isOk)
-                .andExpectAll(
-                        jsonPath("\$.id").value(entity.id),
-                        jsonPath("\$.name").value(entity.name)
-                )
-                .andDo(print())
+            .andExpect(status().isOk)
+            .andExpectAll(
+                jsonPath("\$.id").value(entity.id),
+                jsonPath("\$.name").value(entity.name),
+                jsonPath("\$.mode.code").value(EquipmentMode.SEMI_AUTOMATIC.code)
+            )
+            .andDo(print())
+    }
+
+    @Test
+    @DisplayName("설비 조회 - 실패")
+    fun getEquipmentNotFountException(){
+        val equipment = Equipment()
+        equipment.id = 1000000
+        equipment.name = "테스트 설비-A"
+        equipment.description = "설명-A"
+        equipment.mode = EquipmentMode.SEMI_AUTOMATIC
+
+        mockMvc.perform(get("/v1/equipments/{id}", equipment.id))
+            .andExpect(status().is4xxClientError)
+            .andExpectAll(
+                jsonPath("\$.date").isNotEmpty
+            )
+            .andDo(print())
     }
 }

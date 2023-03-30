@@ -5,7 +5,7 @@ import com.example.kt1.domain.event.EquipmentCreateEvent
 import org.springframework.context.ApplicationEventPublisher
 
 class EquipmentEventPublisherAdapter(
-        private var applicationEventPublisher: ApplicationEventPublisher
+    private var applicationEventPublisher: ApplicationEventPublisher
 ) : EquipmentEventPublisher {
 
     override fun publishEquipmentCreateEvent(event: EquipmentCreateEvent) {

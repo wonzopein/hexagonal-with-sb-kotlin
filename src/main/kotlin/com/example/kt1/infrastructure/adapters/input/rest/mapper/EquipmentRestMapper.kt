@@ -9,8 +9,8 @@ import org.mapstruct.Mapper
 @Mapper(componentModel = "spring")
 interface EquipmentRestMapper {
 
-    fun toEquipment(equipmentCreateRequest: EquipmentCreateRequest) : Equipment
-    fun toEquipmentCreateResponse(equipment: Equipment) : EquipmentCreateResponse
-    fun toEquipmentQueryResponse(equipment: Equipment) : EquipmentQueryResponse
+    fun toEquipment(equipmentCreateRequest: EquipmentCreateRequest): Equipment
+    fun toEquipmentCreateResponse(equipment: Equipment): EquipmentCreateResponse
+    fun toEquipmentQueryResponse(equipment: Equipment): EquipmentQueryResponse
 
 }

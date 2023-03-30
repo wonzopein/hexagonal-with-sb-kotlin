@@ -14,22 +14,23 @@ class BeanConfiguration {
 
     @Bean
     fun equipmentPersistenceAdapter(
-            equipmentRepository: EquipmentRepository,
-            equipmentPersistenceMapper: EquipmentPersistenceMapper
+        equipmentRepository: EquipmentRepository,
+        equipmentPersistenceMapper: EquipmentPersistenceMapper
     ): EquipmentPersistenceAdapter {
         return EquipmentPersistenceAdapter(equipmentRepository, equipmentPersistenceMapper)
     }
 
     @Bean
     fun equipmentEventPublisherAdapter(
-            applicationEventPublisher: ApplicationEventPublisher
+        applicationEventPublisher: ApplicationEventPublisher
     ): EquipmentEventPublisherAdapter {
         return EquipmentEventPublisherAdapter(applicationEventPublisher)
     }
 
     @Bean
-    fun equipmentService(equipmentPersistenceAdapter: EquipmentPersistenceAdapter,
-                         equipmentEventPublisherAdapter: EquipmentEventPublisherAdapter
+    fun equipmentService(
+        equipmentPersistenceAdapter: EquipmentPersistenceAdapter,
+        equipmentEventPublisherAdapter: EquipmentEventPublisherAdapter
     ): EquipmentService {
         return EquipmentService(equipmentPersistenceAdapter, equipmentEventPublisherAdapter)
     }

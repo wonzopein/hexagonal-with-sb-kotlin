@@ -7,20 +7,20 @@ import com.example.kt1.infrastructure.adapters.output.persistence.repository.Equ
 import org.springframework.data.repository.findByIdOrNull
 
 class EquipmentPersistenceAdapter(
-        private var equipmentRepository: EquipmentRepository,
-        private var equipmentPersistenceMapper: EquipmentPersistenceMapper
+    private var equipmentRepository: EquipmentRepository,
+    private var equipmentPersistenceMapper: EquipmentPersistenceMapper
 ) : EquipmentOutputPort {
 
 
     override fun saveEquipment(equipment: Equipment): Equipment {
 
-        var equipmentEntity  = equipmentPersistenceMapper.toEquipmentEntity(equipment)
+        var equipmentEntity = equipmentPersistenceMapper.toEquipmentEntity(equipment)
         equipmentEntity = equipmentRepository.save(equipmentEntity)
         return equipmentPersistenceMapper.toEquipment(equipmentEntity)
     }
 
     override fun getEquipmentById(id: Long): Equipment? {
-        var equipmentEntity = equipmentRepository.findByIdOrNull(id) ?: return null
+        val equipmentEntity = equipmentRepository.findByIdOrNull(id) ?: return null
         return equipmentPersistenceMapper.toEquipment(equipmentEntity)
     }
 }

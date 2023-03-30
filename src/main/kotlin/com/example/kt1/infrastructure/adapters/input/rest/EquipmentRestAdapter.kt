@@ -14,21 +14,25 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/v1")
 class EquipmentRestAdapter(
-        private val createEquipmentUserCase: CreateEquipmentUserCase,
-        private val getEquipmentUseCase: GetEquipmentUseCase,
-        private val equipmentRestMapper: EquipmentRestMapper
+    private val createEquipmentUserCase: CreateEquipmentUserCase,
+    private val getEquipmentUseCase: GetEquipmentUseCase,
+    private val equipmentRestMapper: EquipmentRestMapper
 ) {
 
     @PostMapping("/equipments")
-    fun createEquipment(@RequestBody @Valid equipmentCreateRequest: EquipmentCreateRequest) : ResponseEntity<EquipmentCreateResponse>{
+    fun createEquipment(@RequestBody @Valid equipmentCreateRequest: EquipmentCreateRequest): ResponseEntity<EquipmentCreateResponse> {
         var equipment = equipmentRestMapper.toEquipment(equipmentCreateRequest)
         equipment = createEquipmentUserCase.saveEquipment(equipment)
-        return ResponseEntity(equipmentRestMapper.toEquipmentCreateResponse(equipment), HttpStatus.CREATED)
+        val response = equipmentRestMapper.toEquipmentCreateResponse(equipment)
+
+        println("createEquipment - ${response.id} ")
+
+        return ResponseEntity(response, HttpStatus.CREATED)
     }
 
     @GetMapping("/equipments/{id}")
-    fun getEquipment(@PathVariable id:Long) : ResponseEntity<EquipmentQueryResponse> {
-        var equipment = getEquipmentUseCase.getEquipmentById(id)
+    fun getEquipment(@PathVariable id: Long): ResponseEntity<EquipmentQueryResponse> {
+        val equipment = getEquipmentUseCase.getEquipmentById(id)
         return ResponseEntity(equipmentRestMapper.toEquipmentQueryResponse(equipment), HttpStatus.OK)
     }
 }

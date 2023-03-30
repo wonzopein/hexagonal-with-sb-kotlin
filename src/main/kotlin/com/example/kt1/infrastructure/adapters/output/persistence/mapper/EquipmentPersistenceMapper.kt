@@ -7,6 +7,6 @@ import org.mapstruct.ReportingPolicy
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 interface EquipmentPersistenceMapper {
-    fun toEquipmentEntity(equipment: Equipment) : EquipmentEntity
-    fun toEquipment(equipmentEntity: EquipmentEntity) : Equipment
+    fun toEquipmentEntity(equipment: Equipment): EquipmentEntity
+    fun toEquipment(equipmentEntity: EquipmentEntity): Equipment
 }

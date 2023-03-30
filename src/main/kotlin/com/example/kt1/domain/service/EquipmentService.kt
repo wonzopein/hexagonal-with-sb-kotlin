@@ -9,8 +9,8 @@ import com.example.kt1.domain.exception.EquipmentNotFound
 import com.example.kt1.domain.model.Equipment
 
 class EquipmentService(
-        private var equipmentOutputPort: EquipmentOutputPort,
-        private var equipmentEventPublisher: EquipmentEventPublisher
+    private var equipmentOutputPort: EquipmentOutputPort,
+    private var equipmentEventPublisher: EquipmentEventPublisher
 ) : CreateEquipmentUserCase, GetEquipmentUseCase {
 
     override fun saveEquipment(equipment: Equipment): Equipment {

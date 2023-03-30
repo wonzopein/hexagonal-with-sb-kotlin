@@ -11,6 +11,6 @@ class EquipmentModeConverter : AttributeConverter<EquipmentMode, Int> {
     }
 
     override fun convertToEntityAttribute(dbData: Int?): EquipmentMode {
-        return EquipmentMode.of(dbData?:throw IllegalArgumentException())
+        return EquipmentMode.of(dbData ?: throw IllegalArgumentException())
     }
 }
