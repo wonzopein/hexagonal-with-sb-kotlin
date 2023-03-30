@@ -24,10 +24,6 @@ enum class EquipmentMode {
         fun of(code: Int) :EquipmentMode {
             return values().first { it.code?.equals(code) ?: throw IllegalArgumentException() }
         }
-
-//        fun of(name: String) :EquipmentMode {
-//            return values().first { it.name == name }
-//        }
     }
 
 }

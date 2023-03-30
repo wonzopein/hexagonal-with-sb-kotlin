@@ -14,9 +14,9 @@ class EquipmentService(
 ) : CreateEquipmentUserCase, GetEquipmentUseCase {
 
     override fun saveEquipment(equipment: Equipment): Equipment {
-        var equipment = equipmentOutputPort.saveEquipment(equipment)
-        equipmentEventPublisher.publishEquipmentCreateEvent(EquipmentCreateEvent(equipment.id))
-        return equipment
+        val persistenceEquipment = equipmentOutputPort.saveEquipment(equipment)
+        equipmentEventPublisher.publishEquipmentCreateEvent(EquipmentCreateEvent(persistenceEquipment.id))
+        return persistenceEquipment
     }
 
     override fun getEquipmentById(id: Long): Equipment {
