@@ -1,5 +1,6 @@
 package com.example.kt1.domain.model
 
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonFormat
 
 /**
@@ -13,7 +14,7 @@ enum class EquipmentMode {
     MANUAL(20, "수동");
 
     var code: Int? = null
-    private var description: String? = null
+    var description: String? = null
 
     constructor()
     constructor(code: Int?, description: String?) {
@@ -22,6 +23,7 @@ enum class EquipmentMode {
     }
 
     companion object {
+        @JsonCreator
         fun of(code: Int): EquipmentMode {
             return values().first { it.code?.equals(code) ?: throw IllegalArgumentException() }
         }

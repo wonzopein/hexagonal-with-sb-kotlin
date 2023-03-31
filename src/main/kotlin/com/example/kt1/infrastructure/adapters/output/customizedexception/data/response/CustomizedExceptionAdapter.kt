@@ -2,8 +2,10 @@ package com.example.kt1.infrastructure.adapters.output.customizedexception.data.
 
 import com.example.kt1.domain.exception.EquipmentNotFound
 import com.example.kt1.infrastructure.adapters.output.customizedexception.ExceptionResponse
+import com.fasterxml.jackson.module.kotlin.MissingKotlinParameterException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.http.converter.HttpMessageNotReadableException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.context.request.WebRequest
@@ -33,6 +35,19 @@ class CustomizedExceptionAdapter : ResponseEntityExceptionHandler() {
         )
         return ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND)
     }
+
+//    @ExceptionHandler(HttpMessageNotReadableException::class)
+//    fun handleHttpMessageNotReadableException(e: HttpMessageNotReadableException){
+//
+//        when (val caused = e.cause) {
+//            is MissingKotlinParameterException -> {
+//                println("${caused.parameter.name} 필드가 누락되었습니다.")
+//            }
+//            else -> {
+//                println("${e.message}")
+//            }
+//        }
+//    }
 
 //    override fun handleMethodArgumentNotValid(ex: MethodArgumentNotValidException, headers: HttpHeaders, status: HttpStatusCode, request: WebRequest): ResponseEntity<Any>? {
 //        val errors: MutableList<String> = ArrayList()

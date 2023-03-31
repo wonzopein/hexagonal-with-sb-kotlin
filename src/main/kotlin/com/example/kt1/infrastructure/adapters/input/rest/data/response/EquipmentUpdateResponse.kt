@@ -1,10 +1,10 @@
-package com.example.kt1.domain.model
+package com.example.kt1.infrastructure.adapters.input.rest.data.response
 
+import com.example.kt1.domain.model.EquipmentMode
 import java.time.LocalDateTime
 import java.util.UUID
 
-
-class Equipment {
+class EquipmentUpdateResponse {
     var id: UUID? = null
     var name: String? = null
     var description: String? = null
