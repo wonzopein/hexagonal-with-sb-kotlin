@@ -11,11 +11,13 @@ import com.example.kt1.infrastructure.adapters.input.rest.data.response.Equipmen
 import com.example.kt1.infrastructure.adapters.input.rest.data.response.EquipmentQueryResponse
 import com.example.kt1.infrastructure.adapters.input.rest.mapper.EquipmentRestMapper
 import jakarta.validation.Valid
+import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
+import org.springframework.data.web.PageableDefault
 import org.springframework.http.HttpStatus
-import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.util.UUID
+import java.util.*
 
 @RestController
 @RequestMapping("/v1/equipments")
@@ -35,18 +37,29 @@ class EquipmentRestAdapter(
     }
 
     @PutMapping("/{id}")
-    fun updateEquipment(@PathVariable id: UUID,
-                        @RequestBody @Valid equipmentUpdateRequest: EquipmentUpdateRequest) : ResponseEntity<Any> {
+    fun updateEquipment(
+        @PathVariable id: UUID,
+        @RequestBody @Valid equipmentUpdateRequest: EquipmentUpdateRequest
+    ): ResponseEntity<Any> {
+
         var equipment = Equipment()
         equipment.id = id
         equipment.name = equipmentUpdateRequest.name
         equipment.description = equipmentUpdateRequest.description
         equipment.updatedBy = equipmentUpdateRequest.updatedBy
-        equipment.mode = equipmentUpdateRequest.mode?.let { EquipmentMode.of(it) }!!
+        equipment.mode = EquipmentMode.of(equipmentUpdateRequest.mode)
 
         equipment = updateEquipmentUseCase.updateEquipment(equipment)
         return ResponseEntity(equipmentRestMapper.toEquipmentUpdateResponse(equipment), HttpStatus.OK)
-//        return ResponseEntity(null, HttpStatus.OK)
+    }
+
+    @GetMapping
+    fun listEquipment(@PageableDefault(size = 10, sort = ["createdAt"], direction = Sort.Direction.DESC) pageable: Pageable): ResponseEntity<List<EquipmentQueryResponse>> {
+        val equipments =
+            getEquipmentUseCase.listEquipments(pageable)
+                .map { equipmentRestMapper.toEquipmentQueryResponse(it) }
+                .toList()
+        return ResponseEntity(equipments, HttpStatus.OK)
     }
 
     @GetMapping("/{id}")
@@ -54,4 +67,6 @@ class EquipmentRestAdapter(
         val equipment = getEquipmentUseCase.getEquipmentById(id)
         return ResponseEntity(equipmentRestMapper.toEquipmentQueryResponse(equipment), HttpStatus.OK)
     }
+
+
 }

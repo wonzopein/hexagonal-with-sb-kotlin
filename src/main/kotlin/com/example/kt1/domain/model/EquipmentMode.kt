@@ -13,11 +13,11 @@ enum class EquipmentMode {
     SEMI_AUTOMATIC(11, "반-자동"),
     MANUAL(20, "수동");
 
-    var code: Int? = null
-    var description: String? = null
+    var code: Int = 0
+    lateinit var description: String
 
     constructor()
-    constructor(code: Int?, description: String?) {
+    constructor(code: Int, description: String) {
         this.code = code
         this.description = description
     }
@@ -25,7 +25,7 @@ enum class EquipmentMode {
     companion object {
         @JsonCreator
         fun of(code: Int): EquipmentMode {
-            return values().first { it.code?.equals(code) ?: throw IllegalArgumentException() }
+            return values().first { (it.code == code) }
         }
     }
 

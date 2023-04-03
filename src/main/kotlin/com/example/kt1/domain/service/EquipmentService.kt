@@ -8,6 +8,7 @@ import com.example.kt1.application.ports.output.EquipmentOutputPort
 import com.example.kt1.domain.event.EquipmentCreateEvent
 import com.example.kt1.domain.exception.EquipmentNotFound
 import com.example.kt1.domain.model.Equipment
+import org.springframework.data.domain.Pageable
 import java.util.UUID
 
 class EquipmentService(
@@ -25,8 +26,12 @@ class EquipmentService(
         return equipmentOutputPort.getEquipmentById(id) ?: throw EquipmentNotFound("Equipment not found with id $id")
     }
 
+    override fun listEquipments(pageable: Pageable): List<Equipment> {
+        return equipmentOutputPort.listEquipments(pageable)
+    }
+
     override fun updateEquipment(equipment: Equipment): Equipment {
-        return equipmentOutputPort.updateEquipment(equipment);
+        return equipmentOutputPort.updateEquipment(equipment)
     }
 
 }
