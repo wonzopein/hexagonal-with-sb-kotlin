@@ -38,7 +38,7 @@ class EquipmentRestAdapter(
 
     @PutMapping("/{id}")
     fun updateEquipment(
-        @PathVariable id: UUID,
+        @PathVariable id: UUID?,
         @RequestBody @Valid equipmentUpdateRequest: EquipmentUpdateRequest
     ): ResponseEntity<Any> {
 
@@ -48,7 +48,6 @@ class EquipmentRestAdapter(
         equipment.description = equipmentUpdateRequest.description
         equipment.updatedBy = equipmentUpdateRequest.updatedBy
         equipment.mode = EquipmentMode.of(equipmentUpdateRequest.mode)
-
         equipment = updateEquipmentUseCase.updateEquipment(equipment)
         return ResponseEntity(equipmentRestMapper.toEquipmentUpdateResponse(equipment), HttpStatus.OK)
     }

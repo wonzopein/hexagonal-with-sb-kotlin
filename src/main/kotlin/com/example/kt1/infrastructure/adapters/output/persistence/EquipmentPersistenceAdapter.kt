@@ -21,9 +21,10 @@ class EquipmentPersistenceAdapter(
     }
 
     override fun updateEquipment(equipment: Equipment): Equipment {
-        var entity = equipmentPersistenceMapper.toEquipmentEntity(equipment)
-        entity = equipmentRepository.save(entity)
-        return equipmentPersistenceMapper.toEquipment(entity)
+        val entity = equipmentPersistenceMapper.toEquipmentEntity(equipment)
+        equipmentRepository.save(entity)
+        //return equipmentPersistenceMapper.toEquipment(entity)
+        return equipment;
     }
 
     override fun getEquipmentById(id: UUID): Equipment? {

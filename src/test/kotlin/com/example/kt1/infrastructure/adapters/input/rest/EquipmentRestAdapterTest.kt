@@ -59,7 +59,7 @@ class EquipmentRestAdapterTest(
         equipment.description = "설명-A"
         equipment.mode = EquipmentMode.SEMI_AUTOMATIC
         var entity = equipmentPersistenceMapper.toEquipmentEntity(equipment)
-        entity = equipmentRepository.save(entity)
+        equipmentRepository.save(entity)
 
         //  업데이트 요청
         val equipmentUpdateRequest = EquipmentUpdateRequest()
