@@ -1,4 +1,4 @@
-package com.example.kt1.domain.model
+package com.example.kt1.domain.equipment.model
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonFormat

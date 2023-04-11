@@ -1,7 +1,7 @@
 package com.example.kt1.infrastructure.adapters.output.persistence
 
 import com.example.kt1.application.ports.output.EquipmentOutputPort
-import com.example.kt1.domain.model.Equipment
+import com.example.kt1.domain.equipment.model.Equipment
 import com.example.kt1.infrastructure.adapters.output.persistence.mapper.EquipmentPersistenceMapper
 import com.example.kt1.infrastructure.adapters.output.persistence.repository.EquipmentRepository
 import org.springframework.data.domain.Pageable

@@ -1,13 +1,14 @@
-package com.example.kt1.domain.service
+package com.example.kt1.domain.equipment.service
 
 import com.example.kt1.application.ports.input.CreateEquipmentUserCase
 import com.example.kt1.application.ports.input.GetEquipmentUseCase
 import com.example.kt1.application.ports.input.UpdateEquipmentUseCase
 import com.example.kt1.application.ports.output.EquipmentEventPublisher
 import com.example.kt1.application.ports.output.EquipmentOutputPort
-import com.example.kt1.domain.event.EquipmentCreateEvent
-import com.example.kt1.domain.exception.EquipmentNotFound
-import com.example.kt1.domain.model.Equipment
+import com.example.kt1.domain.equipment.event.EquipmentCreateEvent
+import com.example.kt1.domain.equipment.event.EquipmentUpdateEvent
+import com.example.kt1.domain.equipment.exception.EquipmentNotFound
+import com.example.kt1.domain.equipment.model.Equipment
 import org.springframework.data.domain.Pageable
 import java.util.UUID
 
@@ -31,7 +32,9 @@ class EquipmentService(
     }
 
     override fun updateEquipment(equipment: Equipment): Equipment {
-        return equipmentOutputPort.updateEquipment(equipment)
+        val equipment = equipmentOutputPort.updateEquipment(equipment)
+        equipmentEventPublisher.publishEquipmentUpdateEvent(EquipmentUpdateEvent(equipment.id))
+        return equipment;
     }
 
 }

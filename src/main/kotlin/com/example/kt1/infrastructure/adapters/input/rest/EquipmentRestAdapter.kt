@@ -3,8 +3,8 @@ package com.example.kt1.infrastructure.adapters.input.rest
 import com.example.kt1.application.ports.input.CreateEquipmentUserCase
 import com.example.kt1.application.ports.input.GetEquipmentUseCase
 import com.example.kt1.application.ports.input.UpdateEquipmentUseCase
-import com.example.kt1.domain.model.Equipment
-import com.example.kt1.domain.model.EquipmentMode
+import com.example.kt1.domain.equipment.model.Equipment
+import com.example.kt1.domain.equipment.model.EquipmentMode
 import com.example.kt1.infrastructure.adapters.input.rest.data.request.EquipmentCreateRequest
 import com.example.kt1.infrastructure.adapters.input.rest.data.request.EquipmentUpdateRequest
 import com.example.kt1.infrastructure.adapters.input.rest.data.response.EquipmentCreateResponse

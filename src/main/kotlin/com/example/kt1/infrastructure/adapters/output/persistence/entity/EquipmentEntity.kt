@@ -1,6 +1,6 @@
 package com.example.kt1.infrastructure.adapters.output.persistence.entity
 
-import com.example.kt1.domain.model.EquipmentMode
+import com.example.kt1.domain.equipment.model.EquipmentMode
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id

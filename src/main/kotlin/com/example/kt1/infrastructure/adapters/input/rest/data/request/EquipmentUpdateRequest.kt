@@ -1,6 +1,6 @@
 package com.example.kt1.infrastructure.adapters.input.rest.data.request
 
-import com.example.kt1.domain.model.EquipmentMode
+import com.example.kt1.domain.equipment.model.EquipmentMode
 
 data class EquipmentUpdateRequest(
     var name: String? = null,

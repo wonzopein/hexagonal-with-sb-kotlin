@@ -1,6 +1,6 @@
 package com.example.kt1.infrastructure.adapters.configuration
 
-import com.example.kt1.domain.service.EquipmentService
+import com.example.kt1.domain.equipment.service.EquipmentService
 import com.example.kt1.infrastructure.adapters.output.eventpublisher.EquipmentEventPublisherAdapter
 import com.example.kt1.infrastructure.adapters.output.persistence.EquipmentPersistenceAdapter
 import com.example.kt1.infrastructure.adapters.output.persistence.mapper.EquipmentPersistenceMapper

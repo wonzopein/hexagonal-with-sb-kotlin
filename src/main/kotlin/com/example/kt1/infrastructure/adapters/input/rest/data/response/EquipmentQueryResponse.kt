@@ -1,6 +1,6 @@
 package com.example.kt1.infrastructure.adapters.input.rest.data.response
 
-import com.example.kt1.domain.model.EquipmentMode
+import com.example.kt1.domain.equipment.model.EquipmentMode
 import java.time.LocalDateTime
 import java.util.UUID
 

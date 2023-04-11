@@ -1,6 +1,6 @@
 package com.example.kt1.infrastructure.adapters.output.customizedexception.data.response
 
-import com.example.kt1.domain.exception.EquipmentNotFound
+import com.example.kt1.domain.equipment.exception.EquipmentNotFound
 import com.example.kt1.infrastructure.adapters.output.customizedexception.ExceptionResponse
 import com.fasterxml.jackson.module.kotlin.MissingKotlinParameterException
 import org.springframework.http.HttpStatus

@@ -1,6 +1,6 @@
 package com.example.kt1.infrastructure.adapters.input.rest.mapper
 
-import com.example.kt1.domain.model.Equipment
+import com.example.kt1.domain.equipment.model.Equipment
 import com.example.kt1.infrastructure.adapters.input.rest.data.request.EquipmentCreateRequest
 import com.example.kt1.infrastructure.adapters.input.rest.data.request.EquipmentUpdateRequest
 import com.example.kt1.infrastructure.adapters.input.rest.data.response.EquipmentCreateResponse

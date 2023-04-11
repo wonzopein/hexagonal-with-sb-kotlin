@@ -1,6 +1,6 @@
 package com.example.kt1.infrastructure.adapters.output.persistence.mapper
 
-import com.example.kt1.domain.model.Equipment
+import com.example.kt1.domain.equipment.model.Equipment
 import com.example.kt1.infrastructure.adapters.output.persistence.entity.EquipmentEntity
 import org.mapstruct.Mapper
 import org.mapstruct.ReportingPolicy

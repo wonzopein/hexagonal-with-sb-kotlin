@@ -1,4 +1,4 @@
-package com.example.kt1.domain.model
+package com.example.kt1.domain.equipment.model
 
 import java.time.LocalDateTime
 import java.util.UUID
