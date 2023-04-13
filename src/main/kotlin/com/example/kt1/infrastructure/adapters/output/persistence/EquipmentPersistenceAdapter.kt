@@ -1,6 +1,6 @@
 package com.example.kt1.infrastructure.adapters.output.persistence
 
-import com.example.kt1.application.ports.output.EquipmentOutputPort
+import com.example.kt1.application.ports.output.EquipmentPersistencePort
 import com.example.kt1.domain.equipment.model.Equipment
 import com.example.kt1.infrastructure.adapters.output.persistence.mapper.EquipmentPersistenceMapper
 import com.example.kt1.infrastructure.adapters.output.persistence.repository.EquipmentRepository
@@ -11,7 +11,7 @@ import java.util.UUID
 class EquipmentPersistenceAdapter(
     private var equipmentRepository: EquipmentRepository,
     private var equipmentPersistenceMapper: EquipmentPersistenceMapper
-) : EquipmentOutputPort {
+) : EquipmentPersistencePort {
 
     override fun createEquipment(equipment: Equipment): Equipment {
 
@@ -24,7 +24,7 @@ class EquipmentPersistenceAdapter(
         val entity = equipmentPersistenceMapper.toEquipmentEntity(equipment)
         equipmentRepository.save(entity)
         //return equipmentPersistenceMapper.toEquipment(entity)
-        return equipment;
+        return equipment
     }
 
     override fun getEquipmentById(id: UUID): Equipment? {

@@ -58,13 +58,14 @@ class EquipmentRestAdapterTest(
         equipment.name = "테스트 설비-A"
         equipment.description = "설명-A"
         equipment.mode = EquipmentMode.SEMI_AUTOMATIC
-        var entity = equipmentPersistenceMapper.toEquipmentEntity(equipment)
+        val entity = equipmentPersistenceMapper.toEquipmentEntity(equipment)
         equipmentRepository.save(entity)
 
         //  업데이트 요청
         val equipmentUpdateRequest = EquipmentUpdateRequest()
         equipmentUpdateRequest.updatedBy = "암오너"
         equipmentUpdateRequest.name = "테스트 설비-A1"
+        equipmentUpdateRequest.description = equipment.description
         equipmentUpdateRequest.mode = EquipmentMode.MANUAL.code
 
         mockMvc.perform(put("/v1/equipments/{id}", entity.id)

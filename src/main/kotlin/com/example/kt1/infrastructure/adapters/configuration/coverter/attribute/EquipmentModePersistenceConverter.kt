@@ -5,7 +5,7 @@ import jakarta.persistence.AttributeConverter
 import jakarta.persistence.Converter
 
 @Converter(autoApply = true)
-class EquipmentModeConverter : AttributeConverter<EquipmentMode, Int> {
+class EquipmentModePersistenceConverter : AttributeConverter<EquipmentMode, Int> {
     override fun convertToDatabaseColumn(attribute: EquipmentMode?): Int {
         return attribute?.code ?: throw IllegalArgumentException()
     }

@@ -4,7 +4,7 @@ import com.example.kt1.domain.equipment.model.Equipment
 import org.springframework.data.domain.Pageable
 import java.util.UUID
 
-interface EquipmentOutputPort {
+interface EquipmentPersistencePort {
     fun createEquipment(equipment: Equipment): Equipment
     fun updateEquipment(equipment: Equipment): Equipment
     fun getEquipmentById(id: UUID): Equipment?

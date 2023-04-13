@@ -42,9 +42,9 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    implementation 'org.mapstruct:mapstruct:1.5.2.Final'
-    kapt 'org.mapstruct:mapstruct-processor:1.5.2.Final'
-    kaptTest 'org.mapstruct:mapstruct-processor:1.5.2.Final'
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    kapt 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+    kaptTest 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 
 //    compileOnly 'org.projectlombok:lombok'
 //    annotationProcessor 'org.projectlombok:lombok'
@@ -57,7 +57,7 @@ allOpen {
     annotation("javax.persistence.Embeddable")
 }
 
-tasks.withType(KotlinCompile) {
+tasks.withType(KotlinCompile).configureEach {
     kotlinOptions {
         freeCompilerArgs = ['-Xjsr305=strict']
         jvmTarget = '17'
